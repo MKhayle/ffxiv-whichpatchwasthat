@@ -98,10 +98,10 @@ public class WhichPatchWasThatPlugin : IDalamudPlugin {
     }
 
     private string? GetActionPatch() {
-        var item = (int)GameGui.HoveredAction.ActionKind switch {
-            34 => ActionToItemMapper.GetItemOfMinion(GameGui.HoveredAction.ActionID),
-            39 => ActionToItemMapper.GetItemOfMount(GameGui.HoveredAction.ActionID),
-            54 => ActionToItemMapper.GetItemOfFashionAccessory(GameGui.HoveredAction.ActionID),
+        var item = (int)GameGui.HoveredAction.DetailKind switch {
+            34 => ActionToItemMapper.GetItemOfMinion(GameGui.HoveredAction.ActionId),
+            39 => ActionToItemMapper.GetItemOfMount(GameGui.HoveredAction.ActionId),
+            54 => ActionToItemMapper.GetItemOfFashionAccessory(GameGui.HoveredAction.ActionId),
             _ => null
         };
         return item is { } id ? ItemPatchMapper.GetPatch(id) : null;
